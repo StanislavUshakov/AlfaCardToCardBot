@@ -23,7 +23,7 @@ namespace AlfaCardToCardBot
                         string expDate = completed.ValidThruYear.ToString() + ((int)completed.ValidThruMonth).ToString("D2");
                         string confirmationUrl = await alfaService.TransferMoney(completed.SourceCardNumber, expDate, completed.CVV, completed.DestinationCardNumber, completed.Amount);
 
-                        await context.PostAsync($"Осталось только подтвердить платеж. Перейдите по адресу https://testjmb.alfabank.ru/uapidemo/uapi/v1/check3ds.html?md=42d5807cbd464e3692677e62c528ee73");
+                        await context.PostAsync($"Осталось только подтвердить платеж. Перейдите по адресу {confirmationUrl}");
                     }
                     catch (FormCanceledException<CardToCardTransfer> e)
                     {
@@ -47,10 +47,6 @@ namespace AlfaCardToCardBot
         /// </summary>
         public async Task<Message> Post([FromBody]Message message)
         {
-            //var service = new AlfaCardToCardBot.Services.AlfabankService();
-            //var output = await service.AuthorizePartner("TEST", "test_user_secret");
-            //var fee = service.GetCommission(output, "5234567890123456", "4234567890123456", 100);
-
             if (message.Type == "Message")
             {
                 return await Conversation.SendAsync(message, MakeRoot);

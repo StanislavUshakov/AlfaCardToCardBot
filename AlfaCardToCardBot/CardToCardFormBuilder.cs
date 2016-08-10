@@ -11,8 +11,6 @@ namespace AlfaCardToCardBot
         public static IForm<CardToCardTransfer> MakeForm()
         {
             FormBuilder<CardToCardTransfer> _order = new FormBuilder<CardToCardTransfer>();
-            
-            string feeDisclaimer = string.Empty;
 
             ValidateAsyncDelegate<CardToCardTransfer> validateCard =
                 async (state, value) =>

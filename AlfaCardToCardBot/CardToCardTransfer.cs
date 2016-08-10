@@ -7,15 +7,15 @@ namespace AlfaCardToCardBot
     [Serializable]
     public class CardToCardTransfer
     {
-        [Prompt("Номер карты отправителя: {||}")]
+        [Prompt("Номер карты отправителя:")]
         [Describe("Номер карты, с которой Вы хотите перевести деньги")]
         public string SourceCardNumber;
 
-        [Prompt("Номер карты получателя: {||}")]
+        [Prompt("Номер карты получателя:")]
         [Describe("Номер карты, на которую Вы хотите перевести деньги")]
         public string DestinationCardNumber;
 
-        [Prompt("VALID THRU (месяц): {||}")]
+        [Prompt("VALID THRU (месяц):")]
         [Describe("VALID THRU (месяц)")]
         public Month ValidThruMonth;
 
@@ -24,7 +24,7 @@ namespace AlfaCardToCardBot
         [Numeric(2016, 2050)]
         public int ValidThruYear;
 
-        [Prompt("CVV: {||}")]
+        [Prompt("CVV:")]
         [Describe("CVV (три цифры на обороте карточки)")]
         public string CVV;
 
